@@ -21,7 +21,8 @@
     		@if(Sentinel::check())
     			Hello! {{ Sentinel::getUser()->first_name }}
     		@else
-    		ID Card Creation
+    		<a href="/">ID Card Creation</a>
     		@endif
     	</h3>
+    <hr>
 </div>

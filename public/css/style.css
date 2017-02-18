@@ -1,0 +1,14 @@
+/*css for login, register and forgot password*/
+
+.bglogin {
+	background: #404040; /*#191919;*/ /*#763A7A;*/
+}
+
+#lititle {
+	color: #b2cecf;
+}
+
+.panel-body{
+	background: #F6F3EC;
+}
+

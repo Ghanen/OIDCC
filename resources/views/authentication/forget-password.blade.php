@@ -3,10 +3,12 @@
 @section('content')
 
 	<div class="row">
-		<div class="col-md-6 col-md-offset-3">
-			<div class="panel panel-primary">
-				<div class="panel-heading">
-					<h3 class="panel-title">Forgot Password</h3>
+		<div class="col-md-4 col-md-offset-4">
+			<div class="panel panel-default">
+				<div class="bglogin">
+					<div class="panel-heading">
+						<h3 class="panel-title" id="lititle" align="center">Forgot Password</h3>
+					</div>
 				</div>
 
 				<div class="panel-body">
@@ -27,7 +29,7 @@
 						</div>
 
 						<div class="form-group">
-								<input type="submit" value="Send code" class="btn btn-success pull-right">				
+								<input type="submit" value="Send code" class="btn btn-primary pull-right">				
 						</div>
 
 					</form>

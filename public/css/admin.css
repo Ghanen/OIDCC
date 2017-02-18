@@ -1,0 +1,56 @@
+/*css for dropdown logout;*/
+
+.well {
+    background:#404040; /*#191919;*/ /*#763A7A;*/ /*#d02552;*/ /*#34495E;*/
+}
+
+.iconid {
+    color: #b2cecf; /*#EC7063;*/
+}
+
+.dropbtn {
+	background-color: #3e8e41; /*#50d07d;*/ /*#2ECC71;*/
+	color: white;
+	padding: 16px;
+	font-size: 16px;
+	border: none;
+	cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 128px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    /*z-index: 1;*/
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #b2cecf;
+} /*#f1f1f1 #EC7063*/
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+	background-color: #0288AD;
+}
+
+/*css for body section*/
+.jumbotron{
+    background: #F6F3EC;
+}
