@@ -6,7 +6,6 @@
 	<link rel="stylesheet" type="text/css" href="{{ URL::asset('css/font-awesome.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/jumbotron-narrow.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/admin.css') }}">
-
 </head>
 <body>
 	@include('admin.admin_layouts.header')
@@ -28,44 +27,30 @@
 				      	<th>Company Address</th>
 				      	<th>Company Registration No.</th>
 				      	<th>Contact</th>
-				      	<th>Company Logo</th>
+				      	<th>CLogo</th>
+				      	<th>Edit</th>
 				    </tr>
 				</thead>
 				<tbody>
 				    <tr>
-				      	<th scope="row">1</th>
-				      	<td>Mark</td>
-				      	<td>Otto</td>
-				      	<td>@mdo</td>
-				      	<td>Mark</td>
-				      	<td>Otto</td>
-				      	<td>@mdo</td>
-				      	<td>Mark</td>
-				      	<td>Otto</td>
+				    	<?php
+				    		foreach ($users as $users) { ?>
+				    		<tr>
+				    		<td><?php echo $users->id ?></td>
+				    		<td><?php echo $users->email ?></td>
+				    		<td><?php echo $users->first_name ?></td>
+				    		<td><?php echo $users->last_name ?></td>
+				    		<td><?php echo $users->company_name ?></td>
+				    		<td><?php echo $users->company_address ?></td>
+				    		<td><?php echo $users->company_registration_no ?></td>
+				    		<td><?php echo $users->contact ?></td>
+				    		<td><?php echo $users->logo ?></td>
+							<td>
+								<a href="#" class="btn btn-danger">Delete</a>
+							</td>
+				    	<?php	}
+				    	?>
 				    </tr>
-				    <tr>
-				      	<th scope="row">2</th>
-				      	<td>Mark</td>
-				      	<td>Otto</td>
-				      	<td>@mdo</td>
-				      	<td>Mark</td>
-				      	<td>Otto</td>
-				      	<td>@mdo</td>
-				      	<td>Mark</td>
-				      	<td>Otto</td>
-				    </tr>
-				    <tr>
-				      	<th scope="row">3</th>
-				      	<td>Mark</td>
-				      	<td>Otto</td>
-				      	<td>@mdo</td>
-				      	<td>Mark</td>
-				      	<td>Otto</td>
-				      	<td>@mdo</td>
-				      	<td>Mark</td>
-				      	<td>Otto</td>
-				    </tr>
-
 				</tbody>
 			</table>				
 		</div>

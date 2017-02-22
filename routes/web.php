@@ -36,3 +36,6 @@ Route::get('/admin_home', 'AdminController@adminHome')->middleware('admin');
 Route::get('/user_home', 'systemUsersController@userHome')->middleware('systemUser');
 
 Route::get('/activate/{email}/{activationCode}', 'ActivationController@activate');
+// // Route::delete('user/{id}/delete', 'AdminController@destroy')->middleware('admin');;
+// Route::delete('user/{id}/delete', ['middleware' => ['admin'], 
+//                                    'uses' => 'AdminController@destroy']);
