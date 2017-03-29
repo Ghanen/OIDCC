@@ -14,15 +14,15 @@
 	<div class="jumbotron container">
 		<h2>List Of Users</h2>
 		<hr>
-		<div class="">
+		<div class="table-responsive">
 
 			<table class="table">
 				<thead>
 				    <tr>
 				      	<th>User_ID</th>
-				      	<th>First Name</th>
-				      	<th>Last Name</th>
 				      	<th>Email</th>
+				      	<th>First Name</th>
+				      	<th>Last name</th>
 				      	<th>Company Name</th>
 				      	<th>Company Address</th>
 				      	<th>Company Registration No.</th>
@@ -46,7 +46,17 @@
 				    		<td><?php echo $users->contact ?></td>
 				    		<td><?php echo $users->logo ?></td>
 							<td>
-								<a href="#" class="btn btn-danger">Delete</a>
+								<br>
+								<form method="POST" action="{{ route('users.destroy', $users->id) }}">
+									<input type="hidden" name="_token" value="{{ csrf_token() }}">
+									<input type="hidden" name="_method" value="DELETE" />
+									<a href="{{ route('users.edit', $users->id)}}" class="btn btn-primary">Edit</a>
+									<input type="submit" class="btn btn-danger" onclick="return confirm('Are you sure to delete this data?');" name="name" value="delete"></input>
+									{{--<button type="submit" class="btn btn-danger">--}}
+										{{--Delete--}}
+									{{--</button>--}}
+								</form>
+															
 							</td>
 				    	<?php	}
 				    	?>

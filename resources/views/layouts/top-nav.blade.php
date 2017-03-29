@@ -1,28 +1,29 @@
-<div class="header clearfix">
-    <nav>
+<div>   <!-- class="header clearfix"> -->
+    <nav class="">
         <ul class="nav nav-pills pull-right">
 
-        	@if (Sentinel::check())
+        	<!-- @if (Sentinel::check())
         		<li role="presentation">
         		<form action="/logout" method="POST" id="logout-form">
         			{{  csrf_field() }}
         			<a href="#" onclick="document.getElementById('logout-form').submit()">Logout</a>
         		</form>
-        	</li>
+        	   </li>
 
-        	@else
-        	<li role="presentation"><a href="/login">Login</a></li>
-        	<li role="presentation"><a href="/register">Register</a></li>
+        	@else -->
+        	<li role="presentation"><a href="/login" class="relog">Login</a></li>
+        	<li role="presentation"><a href="/register" class="relog">Register</a></li>
 
-        	@endif  	
+        	<!-- @endif   -->	
         </ul>
-    </nav>
-    	<h3 class="text-muted">
-    		@if(Sentinel::check())
+        	<h3 >
+    		<!-- @if(Sentinel::check())
     			Hello! {{ Sentinel::getUser()->first_name }}
-    		@else
-    		<a href="/">ID Card Creation</a>
-    		@endif
+    		@else -->
+            <a href="/login"><img src="{{URL::asset('/images/logo.png')}}" height="50" width="60"></a>
+    		<a href="/login" class="logotitle">Card Creator</a>
+    		<!-- @endif -->
     	</h3>
+    </nav>
     <hr>
 </div>

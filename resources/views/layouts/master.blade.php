@@ -15,7 +15,7 @@
 
   </head>
 
-  <body>
+  <body class="body">
 
     <div class="container">
       @include('layouts.top-nav')

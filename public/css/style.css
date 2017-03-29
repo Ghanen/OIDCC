@@ -1,14 +1,55 @@
 /*css for login, register and forgot password*/
 
+.body{
+	/*background-color: #BDBAB4; #E4DBBF;  #232B2B;  #b2cecf;*/
+	background-image: url(../images/identity1.jpg);
+	/*background-size:     cover;                      
+    background-repeat:   no-repeat;
+    height: 100vh; 
+*/
+	background-size:     cover;
+	background-repeat: no-repeat;        
+    position: relative;        
+    width: ;            
+    height: ;       
+    margin-left: auto;      
+    margin-right: auto;
+}
+
 .bglogin {
-	background: #404040; /*#191919;*/ /*#763A7A;*/
+	background: #005A31; /*#8f5db7;*/ /*#404040; /*#191919;*/ /*#763A7A;*/
+	height:70px;
 }
 
 #lititle {
+	font-family: "Times New Roman", Georgia, Serif;
 	color: #b2cecf;
+	margin-top: 10px;
+	font-size: 22px;
 }
 
 .panel-body{
 	background: #F6F3EC;
 }
+
+.logotitle {
+	font-family: "Times New Roman", Georgia, Serif;
+	color: #b2cecf;
+}  
+
+.logotitle:hover {
+	color: green;
+   	text-decoration: none;
+}  /* mouse over link */
+
+.relog {
+	font-family: "Times New Roman", Georgia, Serif;
+    font-size: 150%;
+    color: #b2cecf;
+} 
+
+.relog:hover {
+	color: green;
+   	text-decoration: none;
+}  /* mouse over link */
 

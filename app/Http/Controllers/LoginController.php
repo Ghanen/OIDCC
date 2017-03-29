@@ -25,16 +25,25 @@ class LoginController extends Controller
             $rememberMe = false;
             if(isset($request->remember_me))
                 $rememberMe = true;
+                if(Sentinel::authenticate($request->all(), $rememberMe, false))
+                {
+                    $company=$request->company_name;
+                    if((Sentinel::getUser()->company_name)==$company){
+                        $user=Sentinel::findById(Sentinel::getUser()->id);
+                        Sentinel::login($user);
+                    }
+                    else{
+//                        return redirect('/login');
+                        return redirect()->back()->with(['error'=>'Company Name does not match!.']);
+                    }
+                    $slug = Sentinel::getUser()->roles()->first()->slug;
 
-            if(Sentinel::authenticate($request->all(), $rememberMe))
-            {
-                $slug = Sentinel::getUser()->roles()->first()->slug;
+                    if ($slug == 'admin')
+                        return redirect('/admin_home');
+                    elseif ($slug == 'systemUsers')
+                        return redirect('/user_home');
+                }
 
-                if ($slug == 'admin')
-                    return redirect('/admin_home');
-                elseif ($slug == 'systemUsers')
-                    return redirect('/user_home');
-            }
             else
             {
                 return redirect()->back()->with(['error'=>'Wrong Username or Password!.']);

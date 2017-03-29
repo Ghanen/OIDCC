@@ -21,6 +21,11 @@ class RegistrationController extends Controller
 
     public function postRegister(Request $request)
     {
+         $this->validate($request, [
+             'password' => 'confirmed|required|min:5|max:10',
+             'password_confirmation' => 'required|min:5|max:10'
+             ]);
+        
     	$user = Sentinel::register($request->all());
         $activation = Activation::create($user);
     	$role = Sentinel::findRoleBySlug('systemUsers');

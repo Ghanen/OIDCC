@@ -4,7 +4,7 @@
 
 	<div class="row">
 		<div class="col-md-4 col-md-offset-4">
-			<div class="panel panel-default">
+			<div class="panel panel-primary">
 				<div class="bglogin">
 					<div class="panel-heading">
 						<h3 class="panel-title" id="lititle" align="center">Forgot Password</h3>

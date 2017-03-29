@@ -6,7 +6,12 @@
 
 .iconid {
     color: #b2cecf; /*#EC7063;*/
+    font-family: "Times New Roman", Georgia, Serif;
 }
+
+.iconid:hover {
+    color: #FFF;
+} 
 
 .dropbtn {
 	background-color: #3e8e41; /*#50d07d;*/ /*#2ECC71;*/
@@ -54,3 +59,12 @@
 .jumbotron{
     background: #F6F3EC;
 }
+
+.bgupdate {
+    background: #3e8e41; /*#005A31;*/ /*#404040; /*#191919;*/ /*#763A7A;*/
+}
+
+#lititle {
+    color: #b2cecf;
+}
+

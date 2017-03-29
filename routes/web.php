@@ -32,8 +32,25 @@ Route::group(['middleware' => 'visitors'], function(){
 
 Route::post('/logout', 'LoginController@logout');
 
+//for admin
 Route::get('/admin_home', 'AdminController@adminHome')->middleware('admin');
+Route::group(['middleware' => ['admin']], function()
+{
+    Route::resource('users','AdminUDController');
+});
+
+//Route::post('/delete', 'AdminController@destroy');
+Route::get('/update', 'AdminController@update')->middleware('admin');
+
+//for users
+Route::group(['middleware' => ['systemUser']], function()
+{
+    Route::resource('employee','EmployeeController');
+});
 Route::get('/user_home', 'systemUsersController@userHome')->middleware('systemUser');
+//Route::get('/pages/addEmployee', 'SystemUsersController@addEmployee')->middleware('systemUser');
+//Route::get('/pages/employeeList', 'EmployeeController@employeeList')->middleware('systemUser');
+Route::get('/design', 'SystemUsersController@design')->middleware('systemUser');
 
 Route::get('/activate/{email}/{activationCode}', 'ActivationController@activate');
 // // Route::delete('user/{id}/delete', 'AdminController@destroy')->middleware('admin');;

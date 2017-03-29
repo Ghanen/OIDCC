@@ -1,6 +1,6 @@
 <div class="well container">
-	<!-- <nav class="navbar navbar-default">
-		<div class="container-fluid"> -->
+	<!-- <nav class="navbar navbar-default"> -->
+		<!-- <div class="container-fluid"> -->
 			<ul class="nav navbar-nav pull-right">
 	    		<div class="dropdown">
 				  	<button class="dropbtn">
@@ -20,10 +20,10 @@
 				
 		    <div class="navbar-header">
 		      	<div class="text-muted">
-				   <h2 class="iconid"> Identity Card Creator </h2>
+				   <a href="/admin_home" style="text-decoration:none"><h2 class="iconid"> ID Creator </h2></a>
 				</div>
 	    	</div>
 	    	
-  		<!-- </div>
-	</nav> -->
+  		<!-- </div> -->
+	<!-- </nav> -->
 </div>
