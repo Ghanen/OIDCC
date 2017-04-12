@@ -5,17 +5,20 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Sentinel;
+use Session;
 
 use Cartalyst\Sentinel\Checkpoints\ThrottlingException;
 
 use Cartalyst\Sentinel\Checkpoints\NotActivatedException;
+use App\User;
 
 
 class LoginController extends Controller
 {
     public function login()
     {
-    	return view('authentication.login');
+        $users = User::all();
+    	return view('authentication.login', ['User' => $users]);
     }
 
     public function postLogin(Request $request)
@@ -66,6 +69,7 @@ class LoginController extends Controller
     public function logout()
     {
     	Sentinel::logout();
+//        Session::flush();
     	return redirect('/login');
     }
 }

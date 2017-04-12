@@ -40,4 +40,9 @@ class User extends EloquentUser
     {
         return static::whereEmail($email)->first();
     }
+
+    public function employee()
+    {
+        return $this->hasMany('App\Employee');
+    }
 }

@@ -17,7 +17,8 @@ class AdminUDController extends Controller
      */
     public function index()
     {
-        return view('admin.admin_home');
+        $users = User::all();
+        return view('admin.admin_home', ['User' => $users]);
     }
 
     /**

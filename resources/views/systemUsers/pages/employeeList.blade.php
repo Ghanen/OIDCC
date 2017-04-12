@@ -23,28 +23,26 @@
             <tbody>
             <a href="{{ route('employee.create')}}" class="btn btn-info pull-right">Add new Employee</a><br>
                 <tr>
-                <?php
-                foreach ($employees as $employee) { ?>
+                @foreach ($employees as $no => $employee)
                 <tr>
-                    <td><?php echo $employee->id ?></td>
-                    <td><?php echo $employee->first_name ?></td>
-                    <td><?php echo $employee->last_name?></td>
-                    <td><?php echo $employee->address?></td>
-                    <td><?php echo $employee->contact?></td>
-                    <td><?php echo $employee->company_name?></td>
-                    <td><?php echo $employee->position?></td>
-                    <td><?php echo $employee->country?></td>
-                    <td><?php echo $employee->idcard ?></td>
+                    <td>{{ $no + 1 }}</td>
+                    <td>{{ $employee->first_name }}</td>
+                    <td>{{ $employee->last_name }}</td>
+                    <td>{{ $employee->address }}</td>
+                    <td>{{ $employee->contact }}</td>
+                    <td>{{ $employee->company_name }}</td>
+                    <td>{{ $employee->position }}</td>
+                    <td>{{ $employee->country }}</td>
+                    <td>{{ $employee->idcard }}</td>
                     <td>
                         <form class="" method="post" action="{{ route('employee.destroy',$employee->id) }}">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <input type="hidden" name="_method" value="delete" />
-                            <a href="{{ route('employee.edit', $employee->id)}}" class="btn btn-primary">Edit</a>
-                            <input type="submit" class="btn btn-danger" onclick="return confirm('Are you sure to delete this data?');" name="name" value="delete"></input>
+                            <a href="{{ route('employee.edit', $employee->id)}}" class="btn btn-primary"><i class="fa fa-edit"></i> Edit</a>
+                            <input type="submit" class="btn btn-danger" onclick="return confirm('Are you sure to delete this data?');" name="name" value="delete"><i class="fa fa-delete"></i></input>
                         </form>
                     </td>
-                    <?php	}
-                    ?>
+                @endforeach
                 </tr>
             </tbody>
         </table>

@@ -12,7 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+        return view('welcome');
+
 });
 
 Route::group(['middleware' => 'visitors'], function(){
@@ -42,7 +43,13 @@ Route::group(['middleware' => ['admin']], function()
 //Route::post('/delete', 'AdminController@destroy');
 Route::get('/update', 'AdminController@update')->middleware('admin');
 
-//for users
+//for users updating profile
+Route::group(['middleware' => ['systemUser']], function()
+{
+    Route::resource('profile','UserController');
+});
+
+//for user adding, updating and editing employee
 Route::group(['middleware' => ['systemUser']], function()
 {
     Route::resource('employee','EmployeeController');
@@ -52,7 +59,15 @@ Route::get('/user_home', 'systemUsersController@userHome')->middleware('systemUs
 //Route::get('/pages/employeeList', 'EmployeeController@employeeList')->middleware('systemUser');
 Route::get('/design', 'SystemUsersController@design')->middleware('systemUser');
 
+//for design
+Route::get('/design', 'DesignController@userid')->middleware('systemUser');
+Route::post('/design', 'DesignController@userid')->middleware('systemUser');
+
+Route::post('/go', 'DesignController@postgo')->middleware('systemUser');
+
+
 Route::get('/activate/{email}/{activationCode}', 'ActivationController@activate');
 // // Route::delete('user/{id}/delete', 'AdminController@destroy')->middleware('admin');;
 // Route::delete('user/{id}/delete', ['middleware' => ['admin'], 
 //                                    'uses' => 'AdminController@destroy']);
+

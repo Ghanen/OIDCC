@@ -96,7 +96,8 @@
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-image"></i></span>
 									<!-- <input type="file" name="logo" class="form-control"> --> 
-									<input type="text" name="logo" class="form-control" placeholder="Logo"> 
+									{{--<input type="text" name="logo" class="form-control" placeholder="Logo"> --}}
+									<input class="form-control" name="image" type="file" accept="image/">
 								</div>				
 							</div>
 						</div>

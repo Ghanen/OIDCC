@@ -10,7 +10,7 @@
 					@endif
 					</button>
 				  	<div class="dropdown-content">
-						<form action="/logout" method="POST" id="logout-form">
+						<form action="/logout" method="POST" id="logout-form" align="center">
 							{{  csrf_field() }}
 							<a href="#" onclick="document.getElementById('logout-form').submit()">Logout</a>
 						</form> 

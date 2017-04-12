@@ -44,7 +44,9 @@
 }
 
 .dropdown-content a:hover {
-    background-color: #b2cecf;
+    background-color:#E74C3C; /*#b2cecf;*/
+    color:#fffcf5;
+    text-decoration: none;
 } /*#f1f1f1 #EC7063*/
 
 .dropdown:hover .dropdown-content {

@@ -14,7 +14,8 @@
 
                     <br>
                     <div class="panel-body">
-                        <form action="{{ route('employee.store') }}" method="POST">
+                        <form action="{{ route('employee.store') }}" method="POST" enctype="multipart/form-data">
+                            {{ csrf_field() }}
 
                         @if (count($errors) > 0)
                             <div class="alert alert-danger">
@@ -24,7 +25,8 @@
 									@endforeach
                                     </ul>
                                 </div>
-                            @endif
+                            </form>
+                        @endif
                             {{--@if (count($success) > 0)--}}
                                 {{--<div class="alert alert-danger">--}}
                                     {{--<ul>--}}
@@ -32,9 +34,30 @@
                                     {{--</ul>--}}
                                 {{--</div>--}}
                             {{--@endif--}}
-                            {{ csrf_field() }}
+
+
+                            {{--<div class="col-md-3">--}}
+                            {{--<div class="form-group">--}}
+                                {{--<div class="input-group">--}}
+                                    {{--<span class="input-group-addon"><i class="fa fa-user"></i></span>--}}
+                                    {{--<input value="@if(Sentinel::check())--}}
+                                    {{--{{ Sentinel::getUser()->id }}--}}
+                                    {{--@endif" type="text" name="uid" class="form-control">--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                            {{--</div>--}}
+
+
+                            </div>
 
                             <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-envelope-square"></i></span>
+                                        <input type="email" name="email" class="form-control" placeholder="example@example.com" required>
+                                    </div>
+                                </div>
 
                                 <div class="form-group">
                                     <div class="input-group">
@@ -70,7 +93,7 @@
                                 <div class="form-group">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-bank"></i></span>
-                                        <input type="text" name="company_name" class="form-control" placeholder="Company Name" required>
+                                        <input type="text" name="company_name" class="form-control" value="{{ Sentinel::getUser()->company_name }}" placeholder="Company Name" required>
                                     </div>
                                 </div>
 
@@ -96,7 +119,14 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="submit" value="save" class="btn btn-primary pull-right">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-image"></i></span>
+                                        <input class="form-control" name="image" type="file" accept="image/">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="submit" value="Save" class="btn btn-primary pull-right">
                                 </div>
                             </div>
                         </form>

@@ -2,18 +2,23 @@
 
 .body{
 	/*background-color: #BDBAB4; #E4DBBF;  #232B2B;  #b2cecf;*/
-	background-image: url(../images/identity1.jpg);
+	background-image: url(../images/identity2.jpg);
 	/*background-size:     cover;                      
     background-repeat:   no-repeat;
     height: 100vh; 
 */
-	background-size:     cover;
-	background-repeat: no-repeat;        
-    position: relative;        
-    width: ;            
-    height: ;       
-    margin-left: auto;      
-    margin-right: auto;
+    /*background-size: cover;*/
+    /*background-repeat: no-repeat;*/
+    /*position: relative;*/
+    /*width: ;*/
+    /*height: ;*/
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	background-color: #464646;
 }
 
 .bglogin {
@@ -52,4 +57,12 @@
 	color: green;
    	text-decoration: none;
 }  /* mouse over link */
+
+#relog {
+	margin-top:30px;
+}
+
+.logo {
+	margin-top:10px;
+}
 

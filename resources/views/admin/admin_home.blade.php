@@ -33,18 +33,18 @@
 				</thead>
 				<tbody>
 				    <tr>
-				    	<?php
-				    		foreach ($users as $users) { ?>
+
+				    		@foreach ($User as $no => $users)
 				    		<tr>
-				    		<td><?php echo $users->id ?></td>
-				    		<td><?php echo $users->email ?></td>
-				    		<td><?php echo $users->first_name ?></td>
-				    		<td><?php echo $users->last_name ?></td>
-				    		<td><?php echo $users->company_name ?></td>
-				    		<td><?php echo $users->company_address ?></td>
-				    		<td><?php echo $users->company_registration_no ?></td>
-				    		<td><?php echo $users->contact ?></td>
-				    		<td><?php echo $users->logo ?></td>
+				    		<td>{{ $no + 1 }}</td>
+				    		<td>{{ $users->email }}</td>
+				    		<td>{{ $users->first_name }}</td>
+				    		<td>{{ $users->last_name }}</td>
+				    		<td>{{ $users->company_name }}</td>
+				    		<td>{{ $users->company_address }}</td>
+				    		<td>{{ $users->company_registration_no }}</td>
+				    		<td>{{ $users->contact }}</td>
+				    		<td>{{ $users->logo }}</td>
 							<td>
 								<br>
 								<form method="POST" action="{{ route('users.destroy', $users->id) }}">
@@ -56,10 +56,9 @@
 										{{--Delete--}}
 									{{--</button>--}}
 								</form>
-															
+
 							</td>
-				    	<?php	}
-				    	?>
+				    	@endforeach
 				    </tr>
 				</tbody>
 			</table>				

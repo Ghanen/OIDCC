@@ -13,17 +13,20 @@ class CreateEmployeeTable extends Migration
      */
     public function up()
     {
-        Schema::create('employee', function (Blueprint $table) {
+        Schema::create('employees', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
             $table->string('address')->nullable();
             $table->string('contact')->nullable();
+            $table->string('email')->nullable();
+            $table->string('image')->nullable();
             $table->string('company_name')->nullable();
             $table->string('position')->nullable();
             $table->string('country')->nullable();
-
-//            $table->string('userid')->nullable();
+            $table->string('idcard')->nullable();
             $table->timestamps();
         });
     }
@@ -35,6 +38,6 @@ class CreateEmployeeTable extends Migration
      */
     public function down()
     {
-        Schema::drop('employee');
+        Schema::drop('employees');
     }
 }
