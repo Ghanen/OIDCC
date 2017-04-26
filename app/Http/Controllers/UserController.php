@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\User;
+use Image;
 
 class UserController extends Controller
 {
@@ -79,7 +80,13 @@ class UserController extends Controller
         $users-> company_address = $request->company_address;
         $users-> company_registration_no = $request->company_registration_no;
         $users-> contact = $request->contact;
-        $users-> logo = $request->logo;
+        if($request->hasFile('image')){
+            $logo = $request ->file('image');
+            $filename = time() . '.' . $logo->getClientOriginalExtension();
+            $location = public_path('images/logo/' . $filename);
+            Image::make($logo)->resize(125, 125)->save($location);
+            $users->logo = $filename;
+        }
         $users->save();
 
         return redirect()->route('profile.index')->with('success', 'Data has been saved');

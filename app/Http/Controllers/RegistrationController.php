@@ -34,7 +34,7 @@ class RegistrationController extends Controller
     	    $logo = $request ->file('image');
     	    $filename = time() . '.' . $logo->getClientOriginalExtension();
     	    $location = public_path('images/logo/' . $filename);
-    	    Image::make($logo)->resize(35, 35)->save($location);
+    	    Image::make($logo)->resize(125, 125)->save($location);
     	    $user->logo = $filename;
         }
         $user->save();

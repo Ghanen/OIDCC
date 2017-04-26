@@ -1,3 +1,22 @@
+<script>
+    function previewFile(){
+        var preview = document.querySelector('img'); //selects the query named img
+        var file    = document.querySelector('input[type=file]').files[0]; //sames as here
+        var reader  = new FileReader();
+
+        reader.onloadend = function () {
+            preview.src = reader.result;
+        }
+
+        if (file) {
+            reader.readAsDataURL(file); //reads the data as a URL
+        } else {
+            preview.src = "";
+        }
+    }
+
+    previewFile();  //calls the function named previewFile()
+</script>
 @extends('systemUsers.users_layouts.userNav')
 
 @section('content')
@@ -34,7 +53,11 @@
                                     {{--</ul>--}}
                                 {{--</div>--}}
                             {{--@endif--}}
-
+                        @if(session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
 
                             {{--<div class="col-md-3">--}}
                             {{--<div class="form-group">--}}
@@ -48,7 +71,7 @@
                             {{--</div>--}}
 
 
-                            </div>
+
 
                             <div class="col-md-6">
 
@@ -86,9 +109,6 @@
                                         <input type="number" name="contact" class="form-control" placeholder="Contact No." required>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="col-md-6">
 
                                 <div class="form-group">
                                     <div class="input-group">
@@ -104,6 +124,10 @@
                                     </div>
                                 </div>
 
+                            </div>
+
+                            <div class="col-md-6">
+
                                 <div class="form-group">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-globe"></i></span>
@@ -118,10 +142,17 @@
                                     </div>
                                 </div>
 
+                                <div class="form-group" >
+                                    <div class="input-group" style="text-align:center;">
+                                        <img  src="" height="182" alt="Image preview...">
+                                    </div>
+                                </div>
+
+
                                 <div class="form-group">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-image"></i></span>
-                                        <input class="form-control" name="image" type="file" accept="image/">
+                                        <input class="form-control" name="image" type="file" accept="image/" onchange="previewFile()">
                                     </div>
                                 </div>
 

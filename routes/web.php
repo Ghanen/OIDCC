@@ -58,12 +58,22 @@ Route::get('/user_home', 'systemUsersController@userHome')->middleware('systemUs
 //Route::get('/pages/addEmployee', 'SystemUsersController@addEmployee')->middleware('systemUser');
 //Route::get('/pages/employeeList', 'EmployeeController@employeeList')->middleware('systemUser');
 Route::get('/design', 'SystemUsersController@design')->middleware('systemUser');
+Route::post('/design', 'SystemUsersController@postDesign')->middleware('systemUser');
+
+Route::get('/templates', 'SystemUsersController@templates')->middleware('systemUser');
+Route::post('/templates', 'SystemUsersController@posttemplates')->middleware('systemUser');
+
+Route::get('/templates2', 'SystemUsersController@templates2')->middleware('systemUser');
+Route::post('/templates2', 'SystemUsersController@posttemplates2')->middleware('systemUser');
+
+Route::get('/templates3', 'SystemUsersController@templates3')->middleware('systemUser');
+Route::post('/templates3', 'SystemUsersController@posttemplates3')->middleware('systemUser');
 
 //for design
-Route::get('/design', 'DesignController@userid')->middleware('systemUser');
-Route::post('/design', 'DesignController@userid')->middleware('systemUser');
-
-Route::post('/go', 'DesignController@postgo')->middleware('systemUser');
+//Route::get('/design', 'DesignController@userid')->middleware('systemUser');
+//Route::post('/design', 'DesignController@userid')->middleware('systemUser');
+//
+//Route::post('/go', 'DesignController@postgo')->middleware('systemUser');
 
 
 Route::get('/activate/{email}/{activationCode}', 'ActivationController@activate');

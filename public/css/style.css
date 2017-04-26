@@ -7,18 +7,18 @@
     background-repeat:   no-repeat;
     height: 100vh; 
 */
-    /*background-size: cover;*/
-    /*background-repeat: no-repeat;*/
-    /*position: relative;*/
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
     /*width: ;*/
     /*height: ;*/
-    /*margin-left: auto;*/
-    /*margin-right: auto;*/
-	background-position: center center;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-size: cover;
-	background-color: #464646;
+    margin-left: auto;
+    margin-right: auto;
+    /*background-position: center center;*/
+    /*background-repeat: no-repeat;*/
+    background-attachment: fixed;
+    /*background-size: cover;*/
+    /*background-color: #52A658;!* #19423C;rgb(105,105,105); #2E8B57;*!*/
 }
 
 .bglogin {
@@ -34,7 +34,7 @@
 }
 
 .panel-body{
-	background: #F6F3EC;
+	background:#F6F3EC;/* #ECECEA;*/
 }
 
 .logotitle {

@@ -4,13 +4,13 @@
 
 	<div class="row">
 		<div class="col-md-4 col-md-offset-4">
-			<div class="panel panel-primary">
+			{{--<div class="panel panel-primary">--}}
 				<div class="bglogin">
 					<div class="panel-heading">
 						<h3 class="panel-title" id="lititle" align="center">Login</h3>
 					</div>
 				</div>
-
+				{{--<br>--}}
 				<div class="panel-body">
 					<form action="/login" method="POST">
 						{{ csrf_field() }}
@@ -65,7 +65,7 @@
 
 					</form>
 				</div>
-			</div>
+			{{--</div>--}}
 		</div>
 	</div>
 

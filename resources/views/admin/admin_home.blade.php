@@ -12,6 +12,7 @@
 
 	<!-- <div class="container"> -->
 	<div class="jumbotron container">
+		<a href="{{ route('users.edit', Sentinel::getUser()->id)}}" class="btn btn-primary pull-right">Admin Profile</a>
 		<h2>List Of Users</h2>
 		<hr>
 		<div class="table-responsive">
@@ -46,12 +47,11 @@
 				    		<td>{{ $users->contact }}</td>
 				    		<td>{{ $users->logo }}</td>
 							<td>
-								<br>
 								<form method="POST" action="{{ route('users.destroy', $users->id) }}">
 									<input type="hidden" name="_token" value="{{ csrf_token() }}">
 									<input type="hidden" name="_method" value="DELETE" />
-									<a href="{{ route('users.edit', $users->id)}}" class="btn btn-primary">Edit</a>
 									<input type="submit" class="btn btn-danger" onclick="return confirm('Are you sure to delete this data?');" name="name" value="delete"></input>
+									{{--<a href="{{ route('users.edit', $users->id)}}" class="btn btn-primary">Edit</a>--}}
 									{{--<button type="submit" class="btn btn-danger">--}}
 										{{--Delete--}}
 									{{--</button>--}}

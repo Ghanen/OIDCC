@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\User;
 
+use Image;
+
 use App\Http\Requests;
 
 class AdminUDController extends Controller
@@ -84,7 +86,14 @@ class AdminUDController extends Controller
         $users-> company_address = $request->company_address;
         $users-> company_registration_no = $request->company_registration_no;
         $users-> contact = $request->contact;
-        $users-> logo = $request->logo;
+        if($request->hasFile('image')){
+            $logo = $request ->file('image');
+            $filename = time() . '.' . $logo->getClientOriginalExtension();
+            $location = public_path('images/logo/' . $filename);
+            Image::make($logo)->resize(125, 125)->save($location);
+            $users->logo = $filename;
+        }
+//        DD($users);
         $users->save();
 
         return redirect()->route('users.index')->with('success', 'Data has been saved');

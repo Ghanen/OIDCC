@@ -13,45 +13,19 @@
 <div class="container-fluid bg-3 text-center">
 	<h3>Templates</h3><br>
 	<div class="row">
-		<div class="col-sm-3">
+			<a href="/templates"><div class="col-sm-3 col-md-offset-1 btn btn-primary" style="width:300px; height:200px;">
+
 			<p>Template</p>
-			<img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-		</div>
-		<div class="col-sm-3">
+		</div></a>
+			<a href="/templates2"><div class="col-sm-3 col-md-offset-1 btn btn-success" style="width:300px; height:200px;">
 			<p>Template1</p>
-			<img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
 		</div>
-		<div class="col-sm-3">
-			<p>Template2</p>
-			<img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-		</div>
-		<div class="col-sm-3">
-			<p>Template3</p>
-			<img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
+			<a href="/templates3"><div class="col-sm-3 col-md-offset-1 btn btn-danger" style="width:300px; height:200px;">
+				<p>Template3</p>
 		</div>
 	</div>
 </div><br>
 
-<div class="container-fluid bg-3 text-center">
-	<h3>Templates</h3><br>
-	<div class="row">
-		<div class="col-sm-3">
-			<p>Template</p>
-			<img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-		</div>
-		<div class="col-sm-3">
-			<p>Template1</p>
-			<img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-		</div>
-		<div class="col-sm-3">
-			<p>Template2</p>
-			<img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-		</div>
-		<div class="col-sm-3">
-			<p>Template3</p>
-			<img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-		</div>
-	</div>
 </div><br>
 
 @endsection

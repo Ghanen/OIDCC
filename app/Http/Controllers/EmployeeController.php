@@ -65,7 +65,7 @@ class EmployeeController extends Controller
             $employee->image = $filename;
         }
         $employee->save();
-        return redirect('employee/create')->with('success', 'Data has been saved');
+        return redirect('employee/create')->with('success', 'Employee has been Added successfully');
     }
 
     /**
@@ -104,6 +104,7 @@ class EmployeeController extends Controller
     {
         //Updating
         $employee = Employee::findOrFail($id);
+        $employee->email = $request->email;
         $employee->first_name = $request->first_name;
         $employee->last_name = $request->last_name;
         $employee->address = $request->address;
@@ -112,6 +113,13 @@ class EmployeeController extends Controller
         $employee->position = $request->position;
         $employee->country = $request->country;
         $employee->idcard = $request->idcard;
+        if($request->hasFile('image')){
+            $emp = $request ->file('image');
+            $filename = time() . '.' . $emp->getClientOriginalExtension();
+            $location = public_path('images/emp/' . $filename);
+            Image::make($emp)->resize(150, 150)->save($location);
+            $employee->image = $filename;
+        }
         $employee->save();
         return redirect()->route('employee.index')->with('success', 'Data has been saved');
     }

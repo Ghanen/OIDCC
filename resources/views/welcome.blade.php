@@ -94,31 +94,26 @@
 {{--</body>--}}
 {{--</html>--}}
 
-        <!DOCTYPE HTML>
-<!--
-	Directive by HTML5 UP
-	html5up.net | @ajlkn
-        Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-    -->
+<!DOCTYPE HTML>
 <html>
 <head>
     <title>OIDCC</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!--[if lte IE 8]><script src="{{ URL::asset('assets/js/ie/html5shiv.js') }}"></script><![endif]-->
     <link rel="stylesheet" href="{{ URL::asset('assets/css/main.css') }}" />
-    <!--[if lte IE 8]><link rel="stylesheet" href="{{ URL::asset('assets/css/ie8.css') }}" /><![endif]-->
 </head>
 <body>
-<div>   <!-- class="header clearfix"> -->
+<div class="heading">   <!-- class="header clearfix"> -->
     <nav class="">
         <ul class="nav nav-pills pull-right">
 
         @if (Sentinel::check())
             <li role="presentation">
-
-                    <a href="/" >Home</a>
-
+                    @if (Sentinel::getUser()->roles()->first()->slug == 'admin')
+                        <a href="/admin_home" >Home</a>
+                    @elseif(Sentinel::getUser()->roles()->first()->slug == 'systemUsers')
+                        <a href="/user_home" >Home</a>
+                    @endif
                </li>
 
             @else
@@ -138,17 +133,9 @@
     <hr>
 </div>
 
-<!-- Header -->
-<div id="header">
-
-    {{--<span class="logo icon fa-paper-plane-o"></span>--}}
-    <h1>Online Visiting/Identity Card Creation</h1>
-
-
-</div>
 
 <!-- Main -->
-<div id="main" style="background-image:url(../../public/images/logo.png);">
+<div id="main" class="bgmain">
     {{--<img src="{{asset('assets/images/idcard.jpg')}}">--}}
     <footer class="major container 75%">
         <h1>Home Dash Board will be coming soon...</h1>
