@@ -6,9 +6,7 @@
 
     </style>
 
-    <script type="text/javascript">
-
-    </script>
+    <script src="https://files.codepedia.info/uploads/iScripts/html2canvas.js"></script>
 
 </head>
 <body>
@@ -71,6 +69,60 @@
                                                                 ev.target.appendChild(document.getElementById(data));
                                                             }
                                                         </script>
+
+                                                        <a class="btn btn-primary" id="btn-Convert-Html2Image2" href="#">Front Download</a>
+                                                        <a class="btn btn-primary" id="btn-Convert-Html2Image" href="#">Back Download</a>
+                                                        <input class="btn btn-info" id="btn-Preview-Image" type="button" value="Preview" />
+
+                                                        <script>
+                                                            $(document).ready(function(){
+
+
+                                                                var element = $("#leftbox"); // global variable
+                                                                var getCanvas; // global variable
+
+                                                                $("#btn-Preview-Image").on('click', function () {
+                                                                    html2canvas(element, {
+                                                                        onrendered: function (canvas) {
+                                                                            $("#previewImage").append(canvas);
+                                                                            getCanvas = canvas;
+                                                                        }
+                                                                    });
+                                                                });
+                                                                $("#btn-Convert-Html2Image2").on('click', function () {
+                                                                    var imgageData = getCanvas.toDataURL("image/png");
+                                                                    // Now browser starts downloading it instead of just showing it
+                                                                    var newData = imgageData.replace(/^data:image\/png/, "data:application/octet-stream");
+                                                                    $("#btn-Convert-Html2Image2").attr("download", "ID Card.png").attr("href", newData);
+                                                                });
+
+                                                            });
+                                                            $(document).ready(function(){
+
+
+                                                                var element = $("#rightbox"); // global variable
+                                                                var getCanvas; // global variable
+
+                                                                $("#btn-Preview-Image").on('click', function () {
+                                                                    html2canvas(element, {
+                                                                        onrendered: function (canvas) {
+                                                                            $("#previewImage").append(canvas);
+                                                                            getCanvas = canvas;
+                                                                        }
+                                                                    });
+                                                                });
+
+                                                                $("#btn-Convert-Html2Image").on('click', function () {
+                                                                    var imgageData = getCanvas.toDataURL("image/png");
+                                                                    // Now browser starts downloading it instead of just showing it
+                                                                    var newData = imgageData.replace(/^data:image\/png/, "data:application/octet-stream");
+                                                                    $("#btn-Convert-Html2Image").attr("download", "ID Card.png").attr("href", newData);
+                                                                });
+
+                                                            });
+
+                                                        </script>
+
                                                         <div class="btn btn-primary" id="leftbox" ondrop="drop(event)" ondragover="allowDrop(event)">
                                                             <img src="{{ asset('images/logo/')}}/{{Sentinel::getUser()->logo}}" style="border-radius: 50%; height:50px; width:70px; float: left;">
                                                             <input type="text" class="btn btn-primary" style="height:40px; width:230px; float:right;" value="Online ID Card Creation"></input>
@@ -136,6 +188,8 @@
                                                     <div>
                                                         <textarea type="text" id="drag20" draggable="true" ondragstart="drag(event)" style="height:50px; width:70px;"></textarea>
                                                     </div>
+
+                                                    <div id="previewImage"></div>
 
                                                 </div>
                                             </div>

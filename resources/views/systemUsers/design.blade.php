@@ -3,83 +3,49 @@
 <head>
 
     <style>
-        /*#makeMeDraggable { width: 300px; height: 300px; background: red; }*/
+        .dropbtn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+        }
+
+        .dropdown-content li {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content li:hover {background-color: #f1f1f1}
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: #3e8e41;
+        }
     </style>
+    {{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>--}}
+    <script src="https://files.codepedia.info/uploads/iScripts/html2canvas.js"></script>
 
-    {{--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>--}}
-    {{--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>--}}
-    <script type="text/javascript">
-        {{--function doFirst(){--}}
-            {{--pic = document.getElementById('image');--}}
-            {{--pic.addEventListener("dragstart", startDrag, false);--}}
-            {{--pic.addEventListener("dragend", endDrag, false);--}}
-            {{--leftbox = document.getElementById('leftbox');--}}
-            {{--leftbox.addEventListener("dragenter", dragenter,false);--}}
-            {{--leftbox.addEventListener("dragleave", dragleave,false);--}}
-            {{--leftbox.addEventListener("dragover", function(e){e.preventDefault();},false);--}}
-            {{--leftbox.addEventListener("drop", dropped,false);--}}
-        {{--}--}}
-
-        {{--function endDrag(e) {--}}
-            {{--picture = e.target;--}}
-            {{--pic.style.visibility = 'hidden';--}}
-        {{--}--}}
-        {{--function dragenter(e) {--}}
-            {{--e.preventDefault();--}}
-            {{--leftbox.style.background='SkyBlue';--}}
-            {{--leftbox.style.border='1px solid red';--}}
-        {{--}--}}
-
-        {{--function dragleave(e) {--}}
-            {{--e.preventDefault();--}}
-            {{--leftbox.style.background='SkyBlue';--}}
-            {{--leftbox.style.border='1px solid black';--}}
-        {{--}--}}
-
-        {{--function startDrag(e){--}}
-            {{--var code = '<img src="{{ asset('images/logo/')}}/{{Sentinel::getUser()->logo}}">';--}}
-            {{--e.dataTransfer.setData('Text', code);--}}
-        {{--}--}}
-        {{--function dropped(e){--}}
-            {{--e.preventDefault();--}}
-            {{--leftbox.innerHTML = e.dataTransfer.getData('Text');--}}
-        {{--}--}}
-
-        {{--window.addEventListener("load", doFirst, false);--}}
-{{--//        function allowDrop(ev) {--}}
-{{--//            ev.preventDefault();--}}
-{{--//        }--}}
-{{--//--}}
-{{--//        function drag(ev) {--}}
-{{--//            ev.dataTransfer.setData("text", ev.target.id);--}}
-{{--//        }--}}
-{{--//--}}
-{{--//        function drop(ev) {--}}
-{{--//            ev.preventDefault();--}}
-{{--//            var data = ev.dataTransfer.getData("text");--}}
-{{--//            ev.target.appendChild(document.getElementById(data));--}}
-{{--//        }--}}
-
-{{--//new--}}
-{{--//        $( init );--}}
-{{--//--}}
-{{--//        function init() {--}}
-{{--//            $('#makeMeDraggable').draggable();--}}
-{{--//        }--}}
-{{--//        function init() {--}}
-{{--//            $('#makeMeDraggable').draggable( {--}}
-{{--//                containment: '#content',--}}
-{{--//                cursor: 'move',--}}
-{{--//                snap: '#content'--}}
-{{--//            } );--}}
-{{--//        }--}}
-    </script>
 
 </head>
 
-{{--<script type="text/javascript" src="{{ URL::asset('js/designing.js') }}"></script>--}}
-
-</head>
 <body>
 
 @extends('systemUsers.users_layouts.userNav')
@@ -118,7 +84,7 @@
                                                         <form action="" id="form_id" method="post" class="form-horizontal">
                                                             {{ csrf_field() }}
                                                             <SELECT class="btn btn-info" name="id" value="">
-                                                                @if (!empty($Employee))
+                                                                @if (isset ($Employee))
                                                                 <?php foreach($Employee as $employee) { ?>
                                                                 <OPTION VALUE="<?php echo $employee->id ?>" name="country_id"><?php echo $employee->id ?>
                                                                 </OPTION>
@@ -127,18 +93,43 @@
                                                             </SELECT><br>
                                                             <button style="display: inline" type="submit">Go</button>
                                                         </form>
-                                                        {{--<section id="leftbox" class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)">--}}
-                                                            {{--ID card front design!!!--}}
-                                                        {{--</section>--}}
+                                                        {{--<button class="btn btn-success pull-right" type="button" onclick="myFunction()">Set background color</button>--}}
 
-                                                        {{--<section id="rightbox">--}}
-                                                            {{--ID card back design!!!--}}
-                                                        {{--</section>--}}
-                                                        {{--<img id="image" src="{{ asset('images/logo/')}}/{{Sentinel::getUser()->logo}}" height:100px; width:120px;>--}}
-                                                        {{--<div class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)">--}}
-                                                            {{--<input class="form-control" type="text" ondragstart="dragStart(event)" draggable="true" id="dragtarget">--}}
-                                                        {{--</div>--}}
+                                                        <div class="dropdown">
+                                                            <button class="dropbtn">Select Color</button>
+                                                            <div class="dropdown-content">
+                                                                <ul>
+                                                                    <li onclick="myFunctionb()">Blue</li>
+                                                                    <li onclick="myFunctionr()">Red</li>
+                                                                    <li onclick="myFunctiony()">Yellow</li>
+                                                                    <li onclick="myFunctionp()">Pink</li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
 
+                                                        {{--Color Picker Script--}}
+                                                        <script>
+                                                            function myFunctionb() {
+                                                                document.getElementById("rightbox").style.backgroundColor = "lightblue";
+                                                                document.getElementById("leftbox").style.backgroundColor = "lightblue";
+                                                            }
+                                                            function myFunctionr() {
+                                                                document.getElementById("rightbox").style.backgroundColor = "#ff6666";
+                                                                document.getElementById("leftbox").style.backgroundColor = "#ff6666";
+                                                            }
+                                                            function myFunctiony() {
+                                                                document.getElementById("rightbox").style.backgroundColor = "#ffff80";
+                                                                document.getElementById("leftbox").style.backgroundColor = "#ffff80";
+                                                            }
+                                                            function myFunctionp() {
+                                                                document.getElementById("rightbox").style.backgroundColor = "#ffcccc";
+                                                                document.getElementById("leftbox").style.backgroundColor = "#ffcccc";
+                                                            }
+                                                        </script>
+                                                        {{--end script for color picker--}}
+
+
+                                                        {{--Start Drag and Drop--}}
                                                         <script>
                                                             function allowDrop(ev) {
                                                                 ev.preventDefault();
@@ -152,33 +143,68 @@
                                                                 ev.preventDefault();
                                                                 var data = ev.dataTransfer.getData("text");
                                                                 ev.target.appendChild(document.getElementById(data));
+                                                                document.getElementById("rightbox").style.marginLeft = "10px";
                                                             }
                                                         </script>
-                                                        {{--<script>--}}
-                                                            {{--function drag_start(event) {--}}
-                                                                {{--var style = window.getComputedStyle(event.target, null);--}}
-                                                                {{--event.dataTransfer.setData("text/plain",--}}
-                                                                    {{--(parseInt(style.getPropertyValue("left"),10) - event.clientX) + ',' + (parseInt(style.getPropertyValue("top"),10) - event.clientY));--}}
-                                                            {{--}--}}
+                                                        <a class="btn btn-primary" id="btn-Convert-Html2Image2" href="#">Front Download</a>
+                                                        <a class="btn btn-primary" id="btn-Convert-Html2Image" href="#">Back Download</a>
+                                                        <input class="btn btn-info" id="btn-Preview-Image" type="button" value="Preview" />
 
-                                                            {{--function drop(event) {--}}
-                                                                {{--var offset = event.dataTransfer.getData("text/plain").split(',');--}}
-                                                                {{--var dm = document.getElementById('drag1');--}}
-                                                                {{--dm.style.left = (event.clientX + parseInt(offset[0],10)) + 'px';--}}
-                                                                {{--dm.style.top = (event.clientY + parseInt(offset[1],10)) + 'px';--}}
-                                                                {{--event.preventDefault();--}}
-                                                                {{--return false;--}}
-                                                            {{--}--}}
-                                                            {{--function drag_over(event) {--}}
-                                                                {{--event.preventDefault();--}}
-                                                                {{--return false;--}}
-                                                            {{--}--}}
-                                                            {{--var dm = document.getElementById('drag1');--}}
-                                                            {{--dm.addEventListener('drag',drag_start,false);--}}
-                                                            {{--document.body.addEventListener('allowDrop',drag_over,false);--}}
-                                                            {{--document.body.addEventListener('drop',drop,false);--}}
+                                                        <script>
+                                                            $(document).ready(function(){
 
-                                                        {{--</script>--}}
+
+                                                                var element = $("#leftbox"); // global variable
+                                                                var getCanvas; // global variable
+
+                                                                $("#btn-Preview-Image").on('click', function () {
+                                                                    html2canvas(element, {
+                                                                        onrendered: function (canvas) {
+                                                                            $("#previewImage").append(canvas);
+                                                                            getCanvas = canvas;
+                                                                        }
+                                                                    });
+                                                                });
+                                                                $("#btn-Convert-Html2Image2").on('click', function () {
+                                                                    var imgageData = getCanvas.toDataURL("image/png");
+                                                                    // Now browser starts downloading it instead of just showing it
+                                                                    var newData = imgageData.replace(/^data:image\/png/, "data:application/octet-stream");
+                                                                    $("#btn-Convert-Html2Image2").attr("download", "ID Card.png").attr("href", newData);
+                                                                });
+
+                                                            });
+                                                            $(document).ready(function(){
+
+
+                                                                var element = $("#rightbox"); // global variable
+                                                                var getCanvas; // global variable
+
+                                                                $("#btn-Preview-Image").on('click', function () {
+                                                                    html2canvas(element, {
+                                                                        onrendered: function (canvas) {
+                                                                            $("#previewImage").append(canvas);
+                                                                            getCanvas = canvas;
+                                                                        }
+                                                                    });
+                                                                });
+
+                                                                $("#btn-Convert-Html2Image").on('click', function () {
+                                                                    var imgageData = getCanvas.toDataURL("image/png");
+                                                                    // Now browser starts downloading it instead of just showing it
+                                                                    var newData = imgageData.replace(/^data:image\/png/, "data:application/octet-stream");
+                                                                    $("#btn-Convert-Html2Image").attr("download", "ID Card.png").attr("href", newData);
+                                                                });
+
+                                                            });
+
+                                                        </script>
+
+
+                                                        <script>
+
+
+                                                        </script>
+
                                                         <div id="leftbox" ondrop="drop(event)" ondragover="allowDrop(event)">
 
                                                         </div>
@@ -188,12 +214,12 @@
                                                         </div>
                                                         <img src="{{ asset('images/logo/')}}/{{Sentinel::getUser()->logo}}" id="drag1" draggable="true" ondragstart="drag(event)" style="height:50px; width:70px;">
                                                     </div>
+                                                    <div id="previewImage">
 
                                                     <div>
                                                         <textarea type="text" id="drag20" draggable="true" ondragstart="drag(event)" style="height:50px; width:70px;"></textarea>
                                                     </div>
-
-
+                                                    @if  ($Employee->count() != 0)
                                                     <div class="table-responsive">
                                                         <table class="table">
                                                             <tr height="40">
@@ -201,9 +227,7 @@
                                                                 <td width="02%" align="center" id="drag9" draggable="true" ondragstart="drag(event)" style="height:50px; width:70px;">:</td>
                                                                 <td id="drag2" draggable="true" ondragstart="drag(event)" style="height:50px; width:70px;">@if(Sentinel::check())
                                                                        {{ $Employee->first()->first_name }}
-                                                                      @else
-
-                                                                   @endif
+                                                                    @endif
                                                                 </td>
                                                             </tr><br>
                                                             <tr>
@@ -218,7 +242,7 @@
                                                                 <td width="35%">Image</td>
                                                                 <td width="02%">:</td>
                                                                 <td id="drag4" draggable="true" ondragstart="drag(event)" style="height:50px; width:70px;">@if(Sentinel::check())
-                                                                        <img src="{{ asset('images/emp/')}}/{{ $Employee->first()->image }}" id="drag22" draggable="true" ondragstart="drag(event)" style="height:100px; width:100px;">
+                                                                        <img src="{{ asset('images/emp/')}}/{{ $Employee->first()->image }}" id="drag5" draggable="true" ondragstart="drag(event)" style="height:80px; width:80px;">
                                                                     @else
                                                                     @endif</td>
                                                             </tr>
@@ -255,12 +279,8 @@
                                                                     @endif</td>
                                                             </tr>
                                                         </table>
-
-
-
-
                                                     </div>
-
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
@@ -285,7 +305,7 @@
                                                         <form action="" id="form_id" method="post" class="form-horizontal">
                                                             {{ csrf_field() }}
                                                             <SELECT class="btn btn-info" name="id" value="">
-                                                                @if (!empty($Employee))
+                                                                @if (isset ($Employee))
                                                                 <?php foreach($Employee as $employee) { ?>
                                                                 <OPTION VALUE="<?php echo $employee->id ?>" name="country_id"><?php echo $employee->id ?>
                                                                 </OPTION>
@@ -294,6 +314,92 @@
                                                             </SELECT><br>
                                                             <button style="display: inline" type="submit">Go</button>
                                                         </form>
+
+
+                                                        <div class="dropdown pull-right">
+                                                            <button class="dropbtn">Select Color</button>
+                                                            <div class="dropdown-content">
+                                                                <ul>
+                                                                    <li onclick="myFunctionbv()">Blue</li>
+                                                                    <li onclick="myFunctionrv()">Red</li>
+                                                                    <li onclick="myFunctionyv()">Yellow</li>
+                                                                    <li onclick="myFunctionpv()">Pink</li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+
+                                                        <script>
+                                                            function myFunctionbv() {
+                                                                document.getElementById("vrightbox").style.backgroundColor = "lightblue";
+                                                                document.getElementById("vleftbox").style.backgroundColor = "lightblue";
+                                                            }
+                                                            function myFunctionrv() {
+                                                                document.getElementById("vrightbox").style.backgroundColor = "#ff6666";
+                                                                document.getElementById("vleftbox").style.backgroundColor = "#ff6666";
+                                                            }
+                                                            function myFunctionyv() {
+                                                                document.getElementById("vrightbox").style.backgroundColor = "#ffff80";
+                                                                document.getElementById("vleftbox").style.backgroundColor = "#ffff80";
+                                                            }
+                                                            function myFunctionpv() {
+                                                                document.getElementById("vrightbox").style.backgroundColor = "#ffcccc";
+                                                                document.getElementById("vleftbox").style.backgroundColor = "#ffcccc";
+                                                            }
+                                                        </script>
+
+                                                        <a class="btn btn-primary" id="btn-Convert-Html2Image3" href="#">Front Download</a>
+                                                        <a class="btn btn-primary" id="btn-Convert-Html2Image4" href="#">Back Download</a>
+                                                        <input class="btn btn-info" id="btn-Preview-Imagev" type="button" value="Preview" />
+                                                        {{--<input class="btn btn-info" id="btn-Preview-Image" type="button" value="Preview" />--}}
+
+                                                        <script>
+                                                            $(document).ready(function(){
+
+
+                                                                var element = $("#vleftbox"); // global variable
+                                                                var getCanvas; // global variable
+
+                                                                $("#btn-Preview-Imagev").on('click', function () {
+                                                                    html2canvas(element, {
+                                                                        onrendered: function (canvas) {
+                                                                            $("#previewImagev").append(canvas);
+                                                                            getCanvas = canvas;
+                                                                        }
+                                                                    });
+                                                                });
+                                                                $("#btn-Convert-Html2Image3").on('click', function () {
+                                                                    var imgageData = getCanvas.toDataURL("image/png");
+                                                                    // Now browser starts downloading it instead of just showing it
+                                                                    var newData = imgageData.replace(/^data:image\/png/, "data:application/octet-stream");
+                                                                    $("#btn-Convert-Html2Image3").attr("download", "ID Card.png").attr("href", newData);
+                                                                });
+
+                                                            });
+                                                            $(document).ready(function(){
+
+
+                                                                var element = $("#vrightbox"); // global variable
+                                                                var getCanvas; // global variable
+
+                                                                $("#btn-Preview-Imagev").on('click', function () {
+                                                                    html2canvas(element, {
+                                                                        onrendered: function (canvas) {
+                                                                            $("#previewImagev").append(canvas);
+                                                                            getCanvas = canvas;
+                                                                        }
+                                                                    });
+                                                                });
+
+                                                                $("#btn-Convert-Html2Image4").on('click', function () {
+                                                                    var imgageData = getCanvas.toDataURL("image/png");
+                                                                    // Now browser starts downloading it instead of just showing it
+                                                                    var newData = imgageData.replace(/^data:image\/png/, "data:application/octet-stream");
+                                                                    $("#btn-Convert-Html2Image4").attr("download", "ID Card.png").attr("href", newData);
+                                                                });
+
+                                                            });
+
+                                                        </script>
 
                                                         <div id="vleftbox" ondrop="drop(event)" ondragover="allowDrop(event)">
 
@@ -304,6 +410,7 @@
                                                         </div>
                                                         <img src="{{ asset('images/logo/')}}/{{Sentinel::getUser()->logo}}" id="drag1" draggable="true" ondragstart="drag(event)" style="height:50px; width:70px;">
                                                     </div>
+                                                    <div id="previewImagev">
 
 
                                                     {{--<div id="content" style="height: 400px; border: 1px solid black;">--}}
@@ -311,7 +418,7 @@
                                                     {{--<div id="makeMeDraggable"> </div>--}}
 
                                                     {{--</div>--}}
-
+                                                    @if  ($Employee->count() != 0)
                                                     <div class="table-responsive">
                                                         <table class="table">
                                                             <tr height="40">
@@ -333,7 +440,7 @@
                                                                 <td width="35%">Image</td>
                                                                 <td width="02%">:</td>
                                                                 <td id="drag4" draggable="true" ondragstart="drag(event)" style="height:50px; width:70px;">@if(Sentinel::check())
-                                                                        <img src="{{ asset('images/emp/')}}/{{ $Employee->first()->image }}" id="drag22" draggable="true" ondragstart="drag(event)" style="height:100px; width:100px;">
+                                                                        <img src="{{ asset('images/emp/')}}/{{ $Employee->first()->image }}" id="drag22" draggable="true" ondragstart="drag(event)" style="height:80px; width:80px;">
                                                                     @endif</td>
                                                             </tr>
                                                             <tr>
@@ -372,7 +479,7 @@
                                                             <textarea type="text" id="drag20" draggable="true" ondragstart="drag(event)" style="height:50px; width:70px;"></textarea>
                                                         </div>
                                                     </div>
-
+                                                    @endif
 
 
                                                 </div>
