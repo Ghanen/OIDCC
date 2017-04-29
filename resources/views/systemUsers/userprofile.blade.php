@@ -11,6 +11,7 @@
                                 <div class="header">
                                     <h3 class="title" style="color: orangered;">Edit Profile</h3>
                                 </div>
+
                                 <div class="content" style="margin-top:30px;">
                                     <form action="{{ route('profile.update', Sentinel::getUser()->id)}}" method="POST" enctype="multipart/form-data">
                                         <input type="hidden" name="_method" value="PATCH">

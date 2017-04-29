@@ -28,7 +28,20 @@ class RegistrationController extends Controller
              'password_confirmation' => 'required|min:5|max:10'
              ]);
 
-    	$user = Sentinel::register($request->all());
+        $this->validate($request, [
+            'email' => 'required|unique:users'
+        ]);
+
+        $this->validate($request, [
+            'contact' => 'required|max:15'
+        ]);
+
+        $this->validate($request, [
+            'company_registration_no' => 'required|unique:users'
+        ]);
+
+
+        $user = Sentinel::register($request->all());
 
     	if($request->hasFile('image')){
     	    $logo = $request ->file('image');

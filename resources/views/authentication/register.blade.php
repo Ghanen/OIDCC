@@ -88,7 +88,7 @@
 							<div class="form-group">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-phone-square"></i></span>
-									<input type="number" name="contact" class="form-control" placeholder="Contact Number" required>
+									<input type="text" name="contact" class="form-control" placeholder="Contact Number" required>
 								</div>				
 							</div>
 

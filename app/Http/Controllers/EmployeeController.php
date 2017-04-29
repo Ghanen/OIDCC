@@ -46,6 +46,10 @@ class EmployeeController extends Controller
     public function store(Request $request)
     {
         //create new data
+        $this->validate($request, [
+            'email' => 'required|unique:employees'
+        ]);
+
         $employee = new employee;
         $employee->user_id = sentinel::getUser()->id;
         $employee->email = $request->email;

@@ -42,6 +42,7 @@
     </style>
     {{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>--}}
     <script src="https://files.codepedia.info/uploads/iScripts/html2canvas.js"></script>
+    {{--<script type="text/javascript" src="{{ URL::asset('js/canvas.js') }}"></script>--}}
 
 
 </head>
